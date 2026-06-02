@@ -1,0 +1,203 @@
+/* ==========================================================================
+   МИНИМАЛЬНЫЕ ТРЕБОВАНИЯ: ПРАКТИЧЕСКАЯ РАБОТА №4 И №5
+   ========================================================================== */
+
+/* ПР №4 (п. 2.1) — Переопределение расчета блочной модели на border-box */
+.minimal-page *,
+.minimal-page *::before,
+.minimal-page *::after {
+    box-sizing: border-box;
+}
+
+/* Сброс ограничений body старого сайта только для этой страницы */
+body.minimal-page {
+    display: block !important;
+    height: auto !important;
+    padding: 10px;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Контейнер страницы */
+.main-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+}
+
+/* ПР №5 (п. 1, 2) — Flexbox в шапке (элементы по краям и выравнивание) */
+.site-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Элементы раздвинуты к краям */
+    align-items: center;            /* Выравнивание по центру высоты */
+    background-color: #333333;
+    padding: 15px 20px;
+    color: #ffffff;
+}
+
+/* ПР №5 (п. 1) — Горизонтальное Flex-меню навигации */
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 15px;                      /* Отступы между пунктами */
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+/* ПР №4 (п. 2.2) — Псевдокласс :hover для ссылок */
+.menu a:hover,
+.menu a.active {
+    color: #ffffff;
+}
+
+/* ПР №5 (п. 3) — Двухколоночный макет контента через Flexbox */
+.content-columns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;                /* Разрешение переноса на мобильных */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Левая колонка */
+.sidebar-info {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Правая колонка */
+.main-form {
+    flex: 2;
+    min-width: 300px;
+}
+
+/* ПР №4 (п. 2.1) — Оформление блоков (border-radius и box-shadow) */
+.info-card, .contact-form {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 20px;
+    border-radius: 8px;             /* Скругление углов */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Тень элемента */
+}
+
+/* Стилизация формы */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* ПР №4 (п. 2.3) — Псевдоэлемент ::after добавляет красную звездочку */
+.required::after {
+    content: " *";
+    color: red;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* ПР №4 (п. 2.3) — Псевдоэлемент ::placeholder для текста внутри полей */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999999;
+    font-style: italic;
+}
+
+/* ПР №4 (п. 2.2) — Псевдокласс :focus для подсветки активного поля */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #333333;
+}
+
+/* Строка с чекбоксом */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ПР №4 (п. 2.2) — Псевдокласс :checked меняет цвет текста при галочке */
+.checkbox-group input:checked + label {
+    color: green;
+    font-weight: bold;
+}
+
+/* Кнопка */
+.btn-submit {
+    padding: 10px 20px;
+    background: #333333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Секция FAQ */
+.faq-block {
+    padding: 20px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faq-item {
+    padding: 10px;
+    border-left: 3px solid #333333;
+}
+
+/* ПР №4 (п. 2.2) — Псевдокласс :nth-child(even) для чередования строк */
+.faq-list .faq-item:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* ПР №4 (п. 2.3) — Псевдоэлемент ::selection меняет цвет выделения текста */
+.minimal-page ::selection {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* Подвал */
+.site-footer {
+    background: #333333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+/* ПР №5 (п. 4) — Медиа-запрос для адаптивности под мобильные экраны */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;   /* Шапка становится вертикальной */
+        gap: 10px;
+    }
+    .content-columns {
+        flex-direction: column;   /* Колонки встают друг под друга */
+    }
+}
